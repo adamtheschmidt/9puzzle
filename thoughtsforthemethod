@@ -1,0 +1,48 @@
+we're going to have a master array and we're going to recursively figure out
+only the solveable puzzles
+
+
+array:
+
+PUZID:  B1:  B2: B3: B4:  visited(1/0):    pathposition:
+0
+1         the branches     visited             where in the
+2     are the possible     if for              BFS is was 
+3	   moves from      if it's been      found
+4       this puzID        visited. def 0
+...
+9!
+
+
+building the array:
+
+we start with the solution ID, mark it visited
+find all possible moves from this spot call this method for each of them
+
+input: ID
+if ID is visited return
+Mark ID as visited
+find moves input ID for each
+
+then we clear the visited collumn to prepare for solving
+also the path position collumn
+
+use breadth first search... now how do we implement that easily?
+
+well we use a queue
+
+visit the node to be solved mark it as pathposition 1, if it's the solution it's solved
+if it's been visited before, end
+else enqueue all possible moves,
+store this node's path position +1 in each of the possible move nodes!!
+
+
+then we backtrace from the solution node:
+
+push on stack the solution node
+thenlook at it's options and push the one with the least non-0 path position
+keep doing this until you reach the puzzle node
+
+then pop everything off the stack and print in that order
+
+QED
